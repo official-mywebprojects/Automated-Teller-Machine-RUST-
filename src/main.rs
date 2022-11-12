@@ -3,7 +3,8 @@ use std::io;
 
 fn main(){
     //DEMO SCREEN
-    println!("Welcome to CLI Bank! \n Tap any key to start");
+    println!("Welcome to CLI Bank! \n A place you can withdraw free fund!! \n");
+    println!("Tap any key to start");
 
     //waiting to read user's input
     let mut any_key = String::new();
@@ -70,7 +71,7 @@ fn main(){
             }else if user_choose == two{
                 cancelscr(); break;
             }else{
-                println!("Enter a valid option between 1 and 2."); break;
+                println!("Enter a valid option between 1 and 2.");
             }
         }
         
@@ -84,17 +85,15 @@ fn main(){
     //withdraw
     fn withdraw(){
         loop{
-            println!("Account Type \n Choose an option:");
-            println!("====================================");
+            println!("Account Type: \n");
+            println!("===================");
 
-            println!("1. Current Account");
-            println!("2. Savings Account");
-            println!("3. CANCEL \n");
-            println!("Enter 1. or 2. or 3 to Cancel");
+            println!("1. CLI Account");
+            println!("2. CANCEL \n");
+            println!("Enter 1. or 2.");
 
             let opt_one = 1;
             let opt_two = 2;
-            let opt_three = 3;
 
             //waiting for user input
             let mut acc_opt = String::new();
@@ -113,7 +112,7 @@ fn main(){
         if acc_opt == opt_one {
             
                 println!("Amount to Withdraw \n Choose an option:");
-                println!("====================================");
+                println!("===================");
 
                 println!("1. 1000");
                 println!("2. CANCEL \n");
@@ -143,8 +142,6 @@ fn main(){
             
         
             }else if acc_opt == opt_two{
-                println!("You chose 2."); break;
-            }else if acc_opt == opt_three{
                 cancelscr(); break;
             }else{
                 //do soemth
