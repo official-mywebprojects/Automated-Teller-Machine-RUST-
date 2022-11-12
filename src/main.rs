@@ -3,7 +3,7 @@ use std::io;
 
 fn main(){
     //DEMO SCREEN
-    println!("Welcome to CLI Bank! \n A place you can withdraw free fund!! \n");
+    println!("\n Welcome to CLI Bank! \n A place you can withdraw free fund!! \n");
     println!("Tap any key to start");
 
     //waiting to read user's input
@@ -16,8 +16,8 @@ fn main(){
 
     fn enter_pin(){
         loop{
-            println!("Please enter your secret number");
-            println!("ENTER PIN");
+            println!("\n Please enter your secret number");
+            println!("ENTER PIN: \n");
 
             let mut user_pin = String::new();
 
@@ -43,7 +43,7 @@ fn main(){
 
     fn wtdscreen(){
         loop{
-            println!("What do you want to do?");
+            println!("\n What do you want to do?");
             println!("CHOOSE AN OPTION:");
 
             let one: u32 = 1;
@@ -85,7 +85,7 @@ fn main(){
     //withdraw
     fn withdraw(){
         loop{
-            println!("Account Type: \n");
+            println!("Account Type:");
             println!("===================");
 
             println!("1. CLI Account");
