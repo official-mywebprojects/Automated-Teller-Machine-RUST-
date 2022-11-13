@@ -1,10 +1,16 @@
 use std::io;
+extern crate timer;
+extern crate chrono;
+use std::sync::mpsc::channel;
 
 
 fn main(){
+    
+    process_timer(2);
+
     //DEMO SCREEN
-    println!("\n Welcome to CLI Bank! \n A place you can withdraw free fund!! \n");
-    println!("Tap any key to start");
+    println!("==================================\n\nWelcome to CLI Bank!\nGet access to free fund anytime!!\n\n==================================");
+    println!("TAP ANY KEY TO CONTINUE");
 
     //waiting to read user's input
     let mut any_key = String::new();
@@ -16,8 +22,7 @@ fn main(){
 
     fn enter_pin(){
         loop{
-            println!("\n Please enter your secret number");
-            println!("ENTER PIN: \n");
+            println!("\n..........\nPlease enter your secret number\nP I N: \n");
 
             let mut user_pin = String::new();
 
@@ -31,9 +36,9 @@ fn main(){
             };
 
             if user_pin > 9999 {
-                println!("Please enter a four digits PIN");
+                println!("x Please enter a four digits PIN");
             }else if user_pin <= 999{
-                println!("PIN can't be less than four digits");
+                println!("x PIN can't be less than four digits");
             }else{
                 wtdscreen(); break; 
             }
@@ -42,9 +47,10 @@ fn main(){
     
 
     fn wtdscreen(){
+        //Timer (2s)
+        process_timer(2);
         loop{
-            println!("\n What do you want to do?");
-            println!("CHOOSE AN OPTION:");
+            println!("\n==================================\nWhat do you want to do?\nCHOOSE AN OPTION:\n==================================");
 
             let one: u32 = 1;
             let two: u32 = 2;
@@ -71,7 +77,7 @@ fn main(){
             }else if user_choose == two{
                 cancelscr(); break;
             }else{
-                println!("Enter a valid option between 1 and 2.");
+                println!("x Enter a valid option between 1 and 2.");
             }
         }
         
@@ -85,8 +91,8 @@ fn main(){
     //withdraw
     fn withdraw(){
         loop{
-            println!("Account Type:");
-            println!("===================");
+            println!("\nAccount To Withdraw:");
+            println!("====================");
 
             println!("1. CLI Account");
             println!("2. CANCEL \n");
@@ -111,11 +117,10 @@ fn main(){
 
         if acc_opt == opt_one {
             
-                println!("Amount to Withdraw \n Choose an option:");
-                println!("===================");
+                println!("\n=========================\nAmount to Withdraw\nCHOOSE AN OPTION:\n=========================");
 
-                println!("1. 1000");
-                println!("2. CANCEL \n");
+                println!("1. 1,000,000");
+                println!("2. CANCEL\n");
                 println!("Enter 1. or 2. \n");
 
                 let c1 = 1;
@@ -137,7 +142,7 @@ fn main(){
                 }else if amt_opt == c2{
                     cancelscr(); break;
                 }else{
-                    println!("Enter a valid option");
+                    println!("x Enter a valid option");
                 }
             
         
@@ -145,37 +150,49 @@ fn main(){
                 cancelscr(); break;
             }else{
                 //do soemth
-                println!("Enter a valid option"); 
+                println!("x Enter a valid option"); 
             }
 
         }
         
     }
 
-    //enquiry
-    // fn enquiry(){
-    //     println!("Enquiry Screen");
-    // }
 
-    // //transfer
-    // fn transfers(){
-    //     println!("Transfer Screen");
-    // }
+    //ATM Timer
+    fn process_timer(stt_print: i64){
+        let timer = timer::Timer::new();
+        let(tx, rx) = channel();
+
+        let _atm_timer = timer.schedule_with_delay(chrono::Duration::seconds(stt_print), move || {
+            tx.send(()).unwrap();
+        });
+
+        rx.recv().unwrap();    
+    }
 
     //cancel
     fn cancelscr(){
-        println!("You cancelled this process... \n");
+        //timer here (2s)
+        process_timer(2);
+        println!("\nYou cancelled this process... \n");
         end_screen();
     }
 
     //successful transaction
     fn successtr(){
-        println!("Successful transaction \n #### TAKE YOUR CASH ### \n");
+        //timer here (4s)
+        process_timer(4);
+        println!("\n\nPlease hold, while your transaction is processing... \n");
+        process_timer(3);
+        println!("--Transaction Complete--\nTAKE YOUR CASH");
+        
         end_screen();
     }
 
     //End transaction screen
     fn end_screen(){
+        //timer here (2s)
+        process_timer(2);
         println!("Thank you for banking with us!!! \n SEE YOU SOON...");
     }
     
