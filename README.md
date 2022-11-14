@@ -1,7 +1,7 @@
 # Automated-Teller-Machine-RUST-
 
 ## Try It! :smiley: Automated Teller Machine with RUST
-#### This simple RUST program illustrate the process flow of an Automated Teller Machine!
+#### This simple RUST program shows the working process of an Automated Teller Machine!
 
 To run this program, you will need RUST installed on your machine.
 To check if you already have RUST on your machine, run `rustc --version` in your CLI or Terminal
