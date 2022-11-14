@@ -12,7 +12,7 @@ fn main(){
     println!("==================================\n\nWelcome to CLI Bank!\nGet access to free fund anytime!!\n\n==================================");
     println!("TAP ANY KEY TO CONTINUE");
 
-    //waiting to read user's input
+    //waiting to receive user input
     let mut any_key = String::new();
 
     //read user input
@@ -144,12 +144,10 @@ fn main(){
                 }else{
                     println!("x Enter a valid option");
                 }
-            
-        
             }else if acc_opt == opt_two{
                 cancelscr(); break;
             }else{
-                //do soemth
+                //do someth
                 println!("x Enter a valid option"); 
             }
 
@@ -172,7 +170,7 @@ fn main(){
 
     //cancel
     fn cancelscr(){
-        //timer here (2s)
+        //timer (2s)
         process_timer(2);
         println!("\nYou cancelled this process... \n");
         end_screen();
@@ -180,7 +178,7 @@ fn main(){
 
     //successful transaction
     fn successtr(){
-        //timer here (4s)
+        //timer (4s)
         process_timer(4);
         println!("\n\nPlease hold, while your transaction is processing... \n");
         process_timer(3);
@@ -191,7 +189,7 @@ fn main(){
 
     //End transaction screen
     fn end_screen(){
-        //timer here (2s)
+        //timer (2s)
         process_timer(2);
         println!("Thank you for banking with us!!! \n SEE YOU SOON...");
     }
